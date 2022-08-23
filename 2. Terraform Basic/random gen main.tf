@@ -12,6 +12,7 @@ terraform {
 provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
+
 // Main function of random_string is to generate random string of given length
 // special and upper are default true
 // for more search "terraform random provider"
@@ -34,7 +35,7 @@ resource "docker_image" "Nodered_img"{
 }
 
 resource "docker_container" "Nodered_cont1" {
-    name = join("-", ["nodered", random_string.random1.id]
+    name = join("-", ["nodered", random_string.random1.id])
 
     image = docker_image.Nodered_img.latest
 
@@ -47,7 +48,7 @@ resource "docker_container" "Nodered_cont1" {
 }
 
 resource "docker_container" "Nodered_cont2" {
-    name = join("-", ["nodered", random_string.random2.id]
+    name = join("-", ["nodered", random_string.random2.id])
 
     image = docker_image.Nodered_img.latest
 
