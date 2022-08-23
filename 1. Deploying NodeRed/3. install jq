@@ -1,0 +1,4 @@
+It helps us to see tfstate file easier in cli without accessing the file
+command: 
+    sudo yum install jq
+we can also use cat in linux
