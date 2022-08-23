@@ -21,7 +21,7 @@ resource "docker_image" "Nodered_img"{
 resource "docker_container" "Nodered_cont" {
     name = "nodered"
     // user define name
-    image = docker_image.Nodered_img.lastest
+    image = docker_image.Nodered_img.latest
 
     ports {
         internal = 1880
