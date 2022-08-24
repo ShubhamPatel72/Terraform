@@ -1,0 +1,29 @@
+-------------------------------------
+REFRESH COMMAND:
+
+The terraform refresh command reads the current settings from all managed 
+remote objects and updates the Terraform state to match
+This won't modify your real remote objects, but it will modify the Terraform state.
+
+command:
+    terraform refresh
+    terraform refresh -target=resource
+
+1. suppose we change name of our container to nodeeee and apply refresh command.
+This wont change terraform state but now in output new name is shown.
+
+2. suppose we change length of random_string to 5 and apply refresh command.
+This wont change anything bcoz this change to change length we need to apply these changes.
+
+--------------------------------------
+RM COMMAND:
+
+Terraform will search the state for any instances matching the given resource address, and remove the 
+record of each one so that Terraform will no longer be tracking the corresponding remote objects.
+
+command:
+    terraform state rm [options] ADDRESS...
+
+1. Suppose we created 2 docker container and remove one docker container through docker rm command
+But it will not reflect in terraform state so remove that container we will use
+terraform state rm docker_container.Nodered_cont[1]

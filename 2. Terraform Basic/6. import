@@ -1,0 +1,13 @@
+Terraform is able to import existing infrastructure. This allows you take resources 
+you've created by some other means and bring it under Terraform management.
+
+prior to running terraform import it is necessary to write manually a resource configuration block 
+for the resource, to which the imported object will be mapped.
+
+Command:
+    terraform import resource id
+
+example:
+    terraform import docker_container.Nodered_cont2 $(docker inspect --format="{{.ID}})" name)
+
+    before run this command make sure you configure resource in root file(main.tf)
