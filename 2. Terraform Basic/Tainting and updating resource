@@ -1,0 +1,12 @@
+Tainting : force the resource to destroy and reapply
+similar to reloading something
+
+command:
+   terraform  taint random_string(resource name)
+
+ tainting this resource effect our container resource aswell bcoz it depends on random_string resource
+ for name
+ so total 2* count resources will be effected by this.
+
+command for untaint:
+   terraform untaint random_string
