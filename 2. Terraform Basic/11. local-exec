@@ -1,0 +1,28 @@
+
+
+------------------
+# local-exec Provisioner
+------------------
+
+The local-exec provisioner invokes a local executable after a resource is created. 
+This invokes a process on the machine running Terraform, not on the resource. 
+
+Use provisioners as a last resort. Use ansible instead of this.
+
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo ${self.private_ip} >> private_ips.txt"
+  }
+}
+
+
+or We can use null resource for this provisioner.
+
+resource "null_resource" "example1" {
+  provisioner "local-exec" {
+    command = "open WFH, '>completed.txt' and print WFH scalar localtime"
+    interpreter = ["perl", "-e"]
+  }
+}

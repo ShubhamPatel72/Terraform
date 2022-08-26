@@ -1,0 +1,54 @@
+
+we can create different file for output and variable like
+variable.tf and output.tf
+and declare variable and output in those file.
+
+------------------
+# Sensitive variable
+------------------
+ for Sensitive variable default value, we should use terraform.tfvars file
+
+ and define variable in this file
+
+ like
+ file name: terraform.tfvars
+
+----------
+
+ext_port = 1880
+
+----------
+
+and remove default value of that variable
+thats it.
+
+If stored variable in another tfvars file and want to take those variable value then we should use
+command:
+    terraform plan/apply --var-file = central.tfvars
+
+or we can directly value like
+    terraform plan/apply -var ext_port = 1980
+
+------------------
+# Variable precedence
+------------------
+
+if we type command  terraform plan -var ext_port = 2000 --var-file=central.tfvars
+    then value of ext_port = value stored in central file
+    because it overwrite the value of previsouly define value
+
+
+------------------
+# Hide Sensitive variable from CLI
+------------------
+
+Then use Sensitive flag inside variable
+
+variable "ext_port" {
+    type = number
+    sensitive = true
+
+}
+
+and if output include these sensitive variable then apply sensitive = true to that output as well
+but you cant see these info in console or in outputs
